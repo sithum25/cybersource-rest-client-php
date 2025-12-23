@@ -14,7 +14,6 @@ class MerchantConfiguration
   
     private static $defaultMerchantConfiguration;
     private static $logger = null;
-    protected string $tempFolderPath;
 
     /**
      * authenticationType for OAuth
@@ -230,7 +229,7 @@ class MerchantConfiguration
         $this->logConfig = new LogConfiguration();
 
         if (self::$logger === null) {
-            self::$logger = (new LogFactory())->getLogger(\CyberSource\Utilities\Helpers\ClassHelper::getClassName(get_class($this)), $this->logConfig);
+            self::$logger = (new LogFactory())->getLogger(\CyberSource\Utilities\Helpers\ClassHelper::getClassName(get_class()), $this->logConfig);
         }
     }
 
@@ -1140,7 +1139,7 @@ class MerchantConfiguration
             }
         }
 		
-        self::$logger = (new LogFactory())->getLogger(\CyberSource\Utilities\Helpers\ClassHelper::getClassName(get_class($this)), $this->getLogConfiguration());
+        self::$logger = (new LogFactory())->getLogger(\CyberSource\Utilities\Helpers\ClassHelper::getClassName(get_class()), $this->getLogConfiguration());
         self::$logger->info(GlobalParameter::LOG_START_MSG);
         $logConfig = $this->getLogConfiguration();
         $configurationData = array(
